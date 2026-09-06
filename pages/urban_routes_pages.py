@@ -16,6 +16,7 @@ class UrbanRoutesPage:
     phone_button = (By.CSS_SELECTOR, '.smart-button')
     phone_field = (By.CLASS_NAME,'np-button')
     phone_number_field = (By.ID,'phone')
+    phone_number = (By.CLASS_NAME, 'np-text')
     phone_code = (By.ID, 'code')
     phone_next_button = (By.XPATH, '//button[text()="Siguiente"]')
     confirm_phone_code_button = (By.XPATH, '//button[text()="Confirmar"]')
@@ -177,10 +178,11 @@ class UrbanRoutesPage:
         )
         return self.driver.find_element(*self.driver_info).text
 
+
     def get_phone(self):
         return self.wait.until(
-            EC.visibility_of_element_located(self.phone_number_field)
-        ).get_attribute('value')
+        EC.visibility_of_element_located(self.phone_number)
+    ).text
 
 
 

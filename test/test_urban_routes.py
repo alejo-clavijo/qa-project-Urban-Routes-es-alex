@@ -31,13 +31,19 @@ class TestUrbanRoutes:
         comfort_tariff = self.routes_page.get_comfort_icon_assert().text
         assert comfort_tariff == 'Comfort'
 
-    def test_3_add_phone_nuber(self):
+    def test_3_add_phone_number(self):
         address_from = data.address_from
         address_to = data.address_to
         self.routes_page.set_route(address_from, address_to)
         self.routes_page.click_request_taxi_button()
         self.routes_page.click_comfort_icon()
         self.routes_page.click_phone_field()
+        self.routes_page.set_phone_number(data.phone_number)
+        self.routes_page.click_phone_next_button()
+        code = retrieve_phone_code(self.driver)
+        self.routes_page.set_phone_code(code)
+        self.routes_page.click_confirm_phone_code()
+        assert self.routes_page.get_phone() == data.phone_number
 
     def test_4_add_credit_card(self):
         address_from = data.address_from
