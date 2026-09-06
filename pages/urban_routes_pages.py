@@ -154,9 +154,6 @@ class UrbanRoutesPage:
             EC.element_to_be_clickable(self.ice_cream_plus)
         ).click()
 
-    def get_ice_cream_plus(self):
-        return self.driver.find_element(*self.ice_cream_value
-        ).text
 
     def get_ice_cream_count(self):
         return self.driver.find_element(*self.ice_cream_value).text

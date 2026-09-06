@@ -191,7 +191,6 @@ class TestUrbanRoutes:
         assert self.routes_page.get_ice_cream_count() == "2"
         self.routes_page.click_order_taxi_button()
         assert self.routes_page.get_search_taxi_modal() == "Buscar automóvil"
-        print(self.driver.page_source)
         driver_info = self.routes_page.get_driver_info()
         assert "El conductor llegará en" in driver_info
 
